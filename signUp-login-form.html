@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>Login/SignUp Page</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <style type="text/css">
+:root {
+    --bg-color:#fff;
+    --form-bg:rgb(202, 251, 221);
+    --btn-bg:rgb(59, 143, 82);
+    --btn-text:#fff;
+    --border:1px solid rgb(54, 237, 103);
+}
+*{  margin:0;
+    padding:0;
+    text-decoration:none;
+    text-transform:capitalize;
+    }
+body{
+    height:100vh;
+    background:var(--bg-color);
+    font:10px/1.5, Aerial, Helvetica, Sanserif; 
+}
+
+.form-container{
+	height:100%; width:100%;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	background-color:var(--bg-color);
+}
+.form-container form{
+	width:240px;
+	padding:50px 30px;
+	background-color:var(--form-bg);
+	border:var(--border);
+	border-radius:20px;
+}
+
+/*Login Page */
+#login{
+	visibility: visible;
+}
+#login input{
+	margin:30px 0px;
+}
+
+/* SignUp Page */
+#signup{
+	width:100%; height:100%;
+	position:fixed;
+	top:0; left:0;
+	visibility: hidden;
+}
+#signup input{
+	margin:20px 0px;
+}
+
+/* Common */
+input{
+	width:90%;
+	padding:5px 10px;
+	font-size:1rem;
+	border:var(--border);
+	border-radius:15px;
+}
+.btn{
+    background-color:var(--btn-bg);
+    color:var(--btn-text);
+    text-align:center;
+    padding:5px;
+    width:100%;
+    }
+p{
+    color:hwb(234 4% 12%);
+    font-size:1.3rem;
+    text-align:center;
+    }
+ 
+  </style>
+ </head>
+ <body>
+   
+   <!-- Login Form -->
+   
+   <div class="form-container" id="login">
+    <form  onsubmit="return checkdata()" action="#" method="post" name="login" >
+   
+     <input type="text"  id="email" name="loginID" placeholder="Email / Phone No. " required="required" >
+     <input type="password" id="password" placeholder="Password" required="required" maxlength="16"  >
+     <input type="submit" value="Login" class="btn" id="login-btn">
+     <p onclick="toSignUp()">Sign Up </p>
+   
+    </form>
+   </div>
+   
+   <!-- SignUp Form -->
+   <div class="form-container" id="signup">
+    <form onsubmit="return createAccount()" action="#" method="post" name="signup">
+   
+     <input type="text" id="name" name="name" placeholder="Name" required="required" >
+     <input type="tel" id="phoneNo" name="phoneNo" placeholder="Phone No." required="required" maxlength="10">
+     <input type="email" id="email" name="emailID" placeholder="Email"  required="required" >
+     <input type="password" id="password"  placeholder="Create Password"   required="required" maxlength="16" >
+     <input type="password" id="cpassword" placeholder="Cornfirm Password" required="required" maxlength="16" >
+     <input type="submit" value="Create Account" class="btn" id="signup-btn">
+	   <p onclick="toLogin()"> Login </p>
+   
+    </form>
+   </div>
+   
+  <script type="text/javascript">
+
+	//set the visibility to show signUp page
+	function toSignUp(){
+		document.getElementById("login").style.visibility = "hidden"; 
+		document.getElementById("signup").style.visibility = "visible"; 
+	}
+
+	//set the visibility to show login page
+	function toLogin(){
+		document.getElementById("login").style.visibility = "visible";
+		document.getElementById("signup").style.visibility = "hidden";
+	}
+
+  function checkdata(){
+	//create references to the input elements for validatipn
+	var loginID = document.getElementById("email");
+	var password = document.getElementById("password");
+			
+	//Check if email field is empty
+	if(loginID.value == ""){
+		alert("Please enter the email");
+		email.focus();
+		return false;
+	}
+	//Check if Paasword field is empty
+	if(password.value == ""){
+		alert("Please enter the Password");
+		password.focus();
+		return false;
+	}
+	//If not empty, return true.
+	alert("Login Successful");
+	return true;
+	}
+	
+	function createAccount(){
+	//create references to the input elements for validation
+	var username = document.getElementById("name");
+	var mobileNo = document.getElementById("phoneNo");
+	var emailid  = document.getElementById("email");
+	var password = document.getElementById("password");
+  
+	//Check if username field is empty
+	if(username.value == ""){
+		alert("Please enter name");
+		username.focus();
+		return false;
+	}
+	//Check if Phone No. field is empty
+	if(mobileNo.value == ""){
+		alert("Please enter valid phone no.");
+		mobileNo.focus();
+		return false;
+	}
+	//Check if email field is empty
+	if(emailid.value == ""){
+		alert("Please enter valid email ID");
+		emailid.focus();
+		return false;
+	}
+	//Check if Paasword field is empty
+	if(password.value == ""){
+		alert("Please enter the Password");
+		password.focus();
+		return false;
+	}
+	//If not empty, return true.
+	alert("Account Created Successfully.")
+	return true;
+	}
+     
+  </script>
+ </body>
+</html>
